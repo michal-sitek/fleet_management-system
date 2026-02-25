@@ -1,0 +1,38 @@
+services:
+  fleet-db:
+    image: postgres:16
+    container_name: fleet-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${FLEET_DB_NAME}
+    ports:
+      - "${FLEET_DB_PORT}:5432"
+    volumes:
+      - fleet-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${FLEET_DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  trip-db:
+    image: postgres:16
+    container_name: trip-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${TRIP_DB_NAME}
+    ports:
+      - "${TRIP_DB_PORT}:5432"
+    volumes:
+      - trip-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${TRIP_DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  fleet-db-data:
+  trip-db-data:
