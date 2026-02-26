@@ -1,3 +1,28 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: fleet-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/fleet_db
+    username: fleet_user
+    password: fleet_pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+logging:
+  level:
+    org.hibernate.SQL: debug
