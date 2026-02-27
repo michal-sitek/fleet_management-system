@@ -31,7 +31,9 @@ public class RequestCountingFilter extends OncePerRequestFilter {
         String method = request.getMethod();
         int status = response.getStatus();
 
-        if (!path.startsWith("/swagger-ui") && !path.startsWith("/v3/api-docs")) {
+        if (!path.startsWith("/swagger-ui")
+                && !path.startsWith("/v3/api-docs")
+                && !path.startsWith("/stats")){
             requestCounter.increment(method, path, status);
         }
     }
