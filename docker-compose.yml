@@ -33,6 +33,16 @@ services:
       timeout: 5s
       retries: 10
 
+  fleet-test-db:
+    image: postgres:16
+    container_name: fleet-test-db
+    environment:
+      POSTGRES_DB: ${FLEET_TEST_DB_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${FLEET_TEST_DB_PORT}:5432"
+
 volumes:
   fleet-db-data:
   trip-db-data:
