@@ -16,3 +16,5 @@ logging:
   level:
     org.flywaydb.core: info
     com.zaxxer.hikari: info
+    org.hibernate.SQL: warn
+    org.hibernate.orm.jdbc.bind: warn
