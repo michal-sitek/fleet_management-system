@@ -1,0 +1,10 @@
+{
+  "/vehicles": {
+    "target": "http://localhost:8081",
+    "secure": false
+  },
+  "/stats": {
+    "target": "http://localhost:8081",
+    "secure": false
+  }
+}

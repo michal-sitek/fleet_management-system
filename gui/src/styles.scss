@@ -1,0 +1,115 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #111827;
+  background: #f3f4f6;
+}
+
+h2 { font-size: 20px; font-weight: 600; margin: 0 0 20px; }
+h3 { font-size: 15px; font-weight: 600; margin: 0 0 12px; color: #374151; }
+
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button {
+  display: inline-block;
+  padding: 7px 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  background: #2563eb;
+  color: #fff;
+}
+
+button:hover:not(:disabled) { background: #1d4ed8; }
+button:disabled              { opacity: 0.5; cursor: not-allowed; }
+
+button.danger              { background: #dc2626; }
+button.danger:hover:not(:disabled) { background: #b91c1c; }
+
+button.outline {
+  background: transparent;
+  color: #374151;
+  border-color: #d1d5db;
+}
+button.outline:hover:not(:disabled) { background: #f9fafb; }
+
+input, select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #dc2626;
+}
+
+input.ng-invalid.ng-touched:focus,
+select.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.page-header h2 { margin: 0; }
+
+.alert-error {
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  color: #b91c1c;
+  margin-bottom: 16px;
+}
+
+.loading { color: #6b7280; padding: 4px 0 12px; }
+
+.field-error {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #dc2626;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.badge-active     { background: #dcfce7; color: #15803d; }
+.badge-in_service { background: #fef9c3; color: #a16207; }
+.badge-sold       { background: #f3f4f6; color: #6b7280; }

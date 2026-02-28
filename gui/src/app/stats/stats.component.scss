@@ -1,0 +1,73 @@
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.total-section {
+  text-align: center;
+  min-width: 120px;
+}
+
+.total-value {
+  font-size: 52px;
+  font-weight: 700;
+  color: #2563eb;
+  line-height: 1;
+}
+
+.total-label {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.divider {
+  width: 1px;
+  height: 80px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.status-section { flex: 1; }
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.status-row:last-child { border-bottom: none; }
+
+.status-key   { font-size: 14px; color: #374151; }
+.status-count { font-size: 14px; font-weight: 600; color: #111827; }
+
+.stat-list { display: flex; flex-direction: column; gap: 6px; }
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.stat-key   { font-size: 13px; color: #374151; }
+.stat-count { font-size: 14px; font-weight: 600; color: #111827; }
+
+.mono { font-family: 'SFMono-Regular', Consolas, monospace; }
+
+.empty-hint { font-size: 13px; color: #9ca3af; }

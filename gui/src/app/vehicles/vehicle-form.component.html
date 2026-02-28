@@ -1,0 +1,123 @@
+<div class="form-wrapper">
+
+  <div class="page-header">
+    <h2>{{ id ? 'Edit Vehicle' : 'New Vehicle' }}</h2>
+    <a routerLink="/vehicles" class="back-link">← Back to list</a>
+  </div>
+
+  <div class="card">
+
+    <div *ngIf="loading && id" class="loading">Loading…</div>
+    <div *ngIf="error"         class="alert-error">{{ error }}</div>
+
+    <form (ngSubmit)="save()" #form="ngForm" novalidate>
+
+      <div class="field">
+        <label for="plateNumber">Plate number</label>
+        <input
+          id="plateNumber"
+          [(ngModel)]="model.plateNumber"
+          name="plateNumber"
+          required maxlength="20"
+          #plateNumber="ngModel"
+          placeholder="e.g. WA 12345"
+        />
+        <span class="field-error" *ngIf="plateNumber.invalid && plateNumber.touched">
+          Plate number is required (max 20 characters).
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="vin">VIN</label>
+        <input
+          id="vin"
+          [(ngModel)]="model.vin"
+          name="vin"
+          required minlength="17" maxlength="17"
+          #vinField="ngModel"
+          placeholder="17-character identifier"
+        />
+        <span class="field-hint">{{ model.vin.length }} / 17 characters</span>
+        <span class="field-error" *ngIf="vinField.invalid && vinField.touched">
+          <ng-container *ngIf="vinField.errors?.['required']">VIN is required.</ng-container>
+          <ng-container *ngIf="vinField.errors?.['minlength']">
+            VIN must be exactly 17 characters (currently {{ model.vin.length }}).
+          </ng-container>
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="brand">Brand</label>
+        <input
+          id="brand"
+          [(ngModel)]="model.brand"
+          name="brand"
+          required maxlength="100"
+          #brandField="ngModel"
+          placeholder="e.g. Toyota"
+        />
+        <span class="field-error" *ngIf="brandField.invalid && brandField.touched">
+          Brand is required.
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="carModel">Model</label>
+        <input
+          id="carModel"
+          [(ngModel)]="model.model"
+          name="model"
+          required maxlength="100"
+          #modelField="ngModel"
+          placeholder="e.g. Corolla"
+        />
+        <span class="field-error" *ngIf="modelField.invalid && modelField.touched">
+          Model is required.
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="year">Year</label>
+        <input
+          id="year"
+          [(ngModel)]="model.year"
+          name="year"
+          type="number"
+          required min="1900" max="2100"
+          #yearField="ngModel"
+        />
+        <span class="field-error" *ngIf="yearField.invalid && yearField.touched">
+          <ng-container *ngIf="yearField.errors?.['required']">Year is required.</ng-container>
+          <ng-container *ngIf="yearField.errors?.['min'] || yearField.errors?.['max']">
+            Year must be between 1900 and 2100.
+          </ng-container>
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="status">Status</label>
+        <select
+          id="status"
+          [(ngModel)]="model.status"
+          name="status"
+          required
+          #statusField="ngModel"
+        >
+          <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+        </select>
+        <span class="field-error" *ngIf="statusField.invalid && statusField.touched">
+          Status is required.
+        </span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="loading || form.invalid">
+          {{ loading ? 'Saving…' : 'Save' }}
+        </button>
+        <a routerLink="/vehicles" class="cancel-link">Cancel</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>

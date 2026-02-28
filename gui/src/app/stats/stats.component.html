@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h2>Request Stats</h2>
+  <button class="outline" (click)="load()">↻ Refresh</button>
+</div>
+
+<div *ngIf="loading" class="loading">Loading…</div>
+<div *ngIf="error"   class="alert-error">{{ error }}</div>
+
+<ng-container *ngIf="data">
+
+  <div class="card summary-card">
+
+    <div class="total-section">
+      <div class="total-value">{{ data.totalRequests }}</div>
+      <div class="total-label">Total Requests</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="status-section">
+      <div class="section-title">By Status Code</div>
+
+      <div *ngFor="let k of keys(data.perStatus)" class="status-row">
+        <span class="status-key">{{ k }}</span>
+        <span class="status-count">{{ data.perStatus[k] }}</span>
+      </div>
+
+      <span *ngIf="keys(data.perStatus).length === 0" class="empty-hint">
+        Brak danych — wykonaj kilka operacji na pojazdach, a następnie odśwież.
+      </span>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h3>By Endpoint</h3>
+
+    <div class="stat-list">
+      <div *ngFor="let k of keys(data.perEndpoint)" class="stat-item">
+        <span class="stat-key mono">{{ k }}</span>
+        <span class="stat-count">{{ data.perEndpoint[k] }}</span>
+      </div>
+    </div>
+
+    <span *ngIf="keys(data.perEndpoint).length === 0" class="empty-hint">
+      Brak danych — wykonaj kilka operacji na pojazdach, a następnie odśwież.
+    </span>
+  </div>
+
+</ng-container>

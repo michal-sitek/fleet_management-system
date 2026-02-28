@@ -1,0 +1,24 @@
+<div class="layout">
+
+  <header class="header">
+    <div class="header-left">
+      <span class="brand">Fleet Management</span>
+      <nav class="nav">
+        <a routerLink="/vehicles" routerLinkActive="active">Vehicles</a>
+        <a routerLink="/stats"    routerLinkActive="active">Stats</a>
+      </nav>
+    </div>
+
+    <div class="auth">
+      <span class="auth-label">Basic Auth:</span>
+      <input [(ngModel)]="username" placeholder="username" />
+      <input [(ngModel)]="password" placeholder="password" type="password" />
+      <button (click)="saveAuth()">Save</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

@@ -1,0 +1,79 @@
+<div class="page-header">
+  <h2>Vehicles</h2>
+  <a routerLink="/vehicles/new" class="btn-new">+ New Vehicle</a>
+</div>
+
+<div class="card">
+
+  <div class="toolbar">
+    <div class="search-box">
+      <input [(ngModel)]="q" placeholder="Search by plate, VIN, brand or model…" (keyup.enter)="search()" />
+      <button (click)="search()">Search</button>
+    </div>
+
+    <label class="filter-label">
+      Sort
+      <select [(ngModel)]="sort" (change)="load()">
+        <option value="createdAt,desc">Newest first</option>
+        <option value="createdAt,asc">Oldest first</option>
+        <option value="year,desc">Year (newest)</option>
+        <option value="year,asc">Year (oldest)</option>
+        <option value="plateNumber,asc">Plate A → Z</option>
+        <option value="plateNumber,desc">Plate Z → A</option>
+      </select>
+    </label>
+
+    <label class="filter-label">
+      Per page
+      <select [(ngModel)]="size" (change)="search()">
+        <option [ngValue]="5">5</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+      </select>
+    </label>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading…</div>
+  <div *ngIf="error"   class="alert-error">{{ error }}</div>
+
+  <table *ngIf="data && !loading" class="table">
+    <thead>
+      <tr>
+        <th>Plate</th>
+        <th>VIN</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of data.content">
+        <td><strong>{{ v.plateNumber }}</strong></td>
+        <td class="mono">{{ v.vin }}</td>
+        <td>{{ v.brand }}</td>
+        <td>{{ v.model }}</td>
+        <td>{{ v.year }}</td>
+        <td>
+          <span class="badge" [ngClass]="'badge-' + v.status.toLowerCase()">{{ v.status }}</span>
+        </td>
+        <td class="actions">
+          <a [routerLink]="['/vehicles', v.id, 'edit']">Edit</a>
+          <button class="danger" (click)="remove(v.id)">Delete</button>
+        </td>
+      </tr>
+
+      <tr *ngIf="data.content.length === 0">
+        <td colspan="7" class="empty">No vehicles found.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="data" class="pager">
+    <button class="outline" (click)="prevPage()" [disabled]="page === 0">← Prev</button>
+    <span class="pager-info">Page {{ page + 1 }} of {{ data.totalPages }} · {{ data.totalElements }} total</span>
+    <button class="outline" (click)="nextPage()" [disabled]="page + 1 >= data.totalPages">Next →</button>
+  </div>
+
+</div>

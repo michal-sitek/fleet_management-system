@@ -1,0 +1,72 @@
+.btn-new {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.btn-new:hover { background: #1d4ed8; color: #fff; text-decoration: none; }
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-box         { display: flex; gap: 8px; flex: 1; min-width: 220px; }
+.search-box input   { flex: 1; }
+
+.filter-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+}
+.filter-label select { width: auto; }
+
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+.table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover          { background: #f9fafb; }
+
+.mono { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 13px; color: #374151; }
+
+.actions        { display: flex; gap: 8px; align-items: center; }
+.actions a      { font-size: 13px; }
+.actions button { padding: 4px 10px; font-size: 12px; }
+
+.empty { text-align: center; color: #9ca3af; padding: 32px; }
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.pager-info { flex: 1; text-align: center; color: #6b7280; font-size: 13px; }
