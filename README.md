@@ -171,6 +171,20 @@ fleet-service/target/site/jacoco/index.html
 
 ---
 
+## Static Code Analysis
+
+The project uses **Checkstyle** (`maven-checkstyle-plugin 3.4.0`) to enforce code style rules. It runs automatically on every build (bound to the `validate` phase) and fails the build if any violations are found.
+
+```bash
+# Run Checkstyle manually
+cd fleet-service
+./mvnw checkstyle:check
+```
+
+The ruleset is defined in `fleet-service/checkstyle.xml` and covers naming conventions (`TypeName`, `MethodName`, `MemberName`, etc.), boolean simplification, and other common code quality checks.
+
+---
+
 ## Environment Variables
 
 Defined in `.env` at the project root:
